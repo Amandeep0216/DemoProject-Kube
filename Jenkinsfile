@@ -6,6 +6,11 @@ pipeline{
         TOMCAT_PASS = 'admin'
         TOMCAT_URL = 'http://localhost:9090'
     }
+
+    tools {
+        maven 'Maven3' // Use the Maven configured in Jenkins
+    }
+    
     stages{
         stage('clone repo'){
             steps{
