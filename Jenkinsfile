@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('clone repo'){
             steps{
-                git 'https://github.com/your-repo.git'
+                git 'https://github.com/Amandeep0216/DemoProject-Kube.git'
             }
         }
         stage('build with maven'){
