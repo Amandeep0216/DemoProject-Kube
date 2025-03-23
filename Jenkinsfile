@@ -2,8 +2,8 @@ pipeline{
     agent any
 
     environment{
-        TOMCAT_USER = admin
-        TOMCAT_PASS = admin
+        TOMCAT_USER = 'admin'
+        TOMCAT_PASS = 'admin'
         TOMCAT_URL = 'http://localhost:9090'
     }
     stages{
