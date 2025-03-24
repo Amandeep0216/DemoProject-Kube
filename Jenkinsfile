@@ -26,9 +26,10 @@ pipeline{
             steps {
                 script {
                     def warFile = "target/simple-java-app-1.0.0.war"
-                    def tomcatDeployUrl = "${env.TOMCAT_URL}/manager/text/deploy?path=/simple-java-app&update=true"
+                    def tomcatWebapps = "/opt/homebrew/var/lib/tomcat/webapps"
 
-                    sh "curl -v -u ${env.TOMCAT_USER}:${env.TOMCAT_PASS} -T ${warFile} \"${tomcatDeployUrl}\""
+                    // Copy the WAR file directly to Tomcat webapps directory
+                    sh "cp ${warFile} ${tomcatWebapps}/simple-java-app.war"
             
                 }
             }
