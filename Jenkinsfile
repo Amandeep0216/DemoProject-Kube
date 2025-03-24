@@ -26,9 +26,12 @@ pipeline{
             steps {
                 script {
                     def warFile = "target/simple-java-app-1.0.0.war"
-                    def tomcatWebapps = "/opt/homebrew/var/lib/tomcat/webapps"
+                    def tomcatWebapps = "/opt/homebrew/Cellar/tomcat/11.0.5/libexec/webapps"
 
-                    // Copy the WAR file directly to Tomcat webapps directory
+                    // Ensure the webapps directory exists
+                    sh "mkdir -p ${tomcatWebapps}"
+
+                    // Copy WAR file directly for automatic deployment
                     sh "cp ${warFile} ${tomcatWebapps}/simple-java-app.war"
             
                 }
