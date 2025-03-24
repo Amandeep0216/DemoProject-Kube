@@ -28,8 +28,8 @@ pipeline{
                     def warFile = "target/simple-java-app-1.0.0.war"
                     def tomcatDeployUrl = "${env.TOMCAT_URL}/manager/text/deploy?path=/simple-java-app&update=true"
 
-                    sh "curl --user ${env.TOMCAT_USER}:${env.TOMCAT_PASS} --upload-file ${warFile} ${tomcatDeployUrl}"
-                }
+                    sh "curl -v --user ${env.TOMCAT_USER}:${env.TOMCAT_PASS} --upload-file ${warFile} ${tomcatDeployUrl}"
+                 }
             }
         }
     }
