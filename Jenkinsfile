@@ -27,7 +27,8 @@ pipeline {
 
                 // Debugging: Check if the WAR file is created
                 sh 'ls -lh target'
-                sh 'jar tf target/simple-java-app-1.0.0.war | grep WEB-INF'
+                sh 'jar tf target/simple-java-app.war | grep WEB-INF'
+
             }
         }
 
