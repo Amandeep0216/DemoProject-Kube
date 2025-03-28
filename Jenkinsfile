@@ -28,25 +28,24 @@ pipeline {
             }
         }
 
-        stage('Deploy to Tomcat') {
-            steps {
-                script {
-                    def warFile = "target/simple-java-app-1.0.0.war"
-                    def tomcatWebapps = "/opt/homebrew/Cellar/tomcat/11.0.5/libexec/webapps"
+stage('Deploy to Tomcat') {
+    steps {
+        script {
+            def warFile = "target/simple-java-app-1.0.0.war"
+            def tomcatWebapps = "/opt/homebrew/Cellar/tomcat/11.0.5/libexec/webapps"
 
-                    echo "Ensuring webapps directory exists..."
-                    sh "mkdir -p ${tomcatWebapps}"
-                    
-                    echo "Copying WAR file to Tomcat webapps directory..."
-                    sh "cp ${warFile} ${tomcatWebapps}/simple-java-app.war"
+            echo "Deleting old deployment..."
+            sh "rm -rf ${tomcatWebapps}/simple-java-app ${tomcatWebapps}/simple-java-app.war"
 
-                    echo "Restarting Tomcat to apply changes..."
-                    sh "brew services restart tomcat"
+            echo "Copying new WAR file..."
+            sh "cp ${warFile} ${tomcatWebapps}/simple-java-app.war"
 
-                    echo "Application deployed successfully! 🎉"
-                    echo "Access the application at: ${TOMCAT_URL}/simple-java-app/hello"
-                }
-            }
+            echo "Waiting for Tomcat to deploy the new application..."
+            sleep(time:10, unit:"SECONDS") // Give Tomcat some time to deploy
+
+            echo "Application deployed! 🎉 Access it at: http://localhost:9090/simple-java-app/hello"
         }
+    }
+}
     }
 }
