@@ -22,9 +22,12 @@ pipeline {
 
         stage('Build with Maven') {
             steps {
-                echo "Building project with Maven..."
+                echo "Building the project with Maven..."
                 sh 'mvn clean package'
-                echo "Maven build completed successfully."
+
+                // Debugging: Check if the WAR file is created
+                sh 'ls -lh target'
+                sh 'jar tf target/simple-java-app-1.0.0.war | grep WEB-INF'
             }
         }
 
