@@ -34,7 +34,7 @@ pipeline {
 stage('Deploy to Tomcat') {
     steps {
         script {
-            def warFile = "target/simple-java-app-1.0.0.war"
+            def warFile = "target/simple-java-app.war"
             def tomcatWebapps = "/opt/homebrew/Cellar/tomcat/11.0.5/libexec/webapps"
 
             echo "Deleting old deployment..."
