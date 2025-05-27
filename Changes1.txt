@@ -1,0 +1,743 @@
+What is spring boot:-
+
+Spring Boot is built on the top of Spring framework to create stand-alone RESTful web application with very minimal configuration and there is no need of external servers to run the application, because it has embedded servers like Tomcat
+
+
+How does Spring Boot works?
+
+Spring Boot automatically configures application based on the dependencies you have added to the project by using annotation. The entry point of the spring boot application is the class that contains @SpringBootApplication annotation and the main method.
+
+
+What is the difference between @Component, @Service, @Repository, and @Controller in Spring?
+
+* @Component: A generic stereotype annotation for any Spring-managed component.
+
+* @Service: Specializes @Component for service layer classes. It indicates that the class performs some service, typically containing business logic.
+
+* @Repository: Specializes @Component for the data access layer. It translates database-related exceptions into Spring’s DataAccessException.
+
+* @Controller: Specializes @Component for the presentation layer (web layer). It is used to define controllers in Spring MVC.
+
+
+
+What is the purpose of @SpringBootApplication annotation?
+
+* @SpringBootApplication is a convenience annotation that combines @Configuration, @EnableAutoConfiguration, and @ComponentScan annotations. It marks the main class of a Spring Boot application and enables auto-configuration and component scanning.
+
+
+Object-Oriented Programming is a methodology or paradigm to design a program using classes and objects. It simplifies software development and maintenance by providing some concepts:
+
+Object:- Any entity that has state and behavior is known as an object. For example, a chair, pen, table, keyboard, bike, etc. It can be physical or logical.
+
+Class:- Collection of objects is called class. It is a logical entity.
+A class can also be defined as a blueprint from which we can create an individual object. 
+
+Inheritance:-
+When one object acquires all the properties and behaviors of a parent object, it is known as inheritance. It provides code reusability. 
+
+Polymorphism:-
+If one task is performed in different ways, it is known as polymorphism. For example: to convince the customer differently, to draw something, for example, shape, triangle, rectangle, etc.
+In Java, we use method overloading and method overriding to achieve polymorphism.
+
+Abstraction:-
+Hiding internal details and showing functionality is known as abstraction. For example phone call, we don't know the internal processing.
+
+Encapsulation:-
+Binding (or wrapping) code and data together into a single unit are known as encapsulation. For example, a capsule, it is wrapped with different medicines.
+
+
+What is the difference between JDK, JRE, and JVM?
+
+* JDK (Java Development Kit): It is a software development environment used to develop Java applications. It includes JRE, an interpreter, a compiler and other tools.
+
+* JRE (Java Runtime Environment): It provides the libraries, Java Virtual Machine (JVM), and other components to run applications written in Java.
+
+* JVM (Java Virtual Machine): It is an abstract machine that provides the runtime environment in which Java bytecode can be executed. 
+
+
+What is the difference between an abstract class and an interface in Java?
+
+* Abstract Class: A class that cannot be instantiated and may contain abstract methods (methods without a body). It can also have concrete methods.
+
+* Interface: A completely abstract class that only contains abstract methods. It is a contract that other classes can implement.
+
+A functional interface in Java is an interface that has only one abstract method. And It can have any number of default or static methods
+Functional interfaces are used primarily to support lambda expressions and method references in Java. 
+
+@FunctionalInterface
+
+
+
+// Interface
+interface Flyable {
+    void fly();
+}
+
+// Abstract Class
+abstract class Animal {
+    public abstract void sound();
+    
+    public void sleep() {
+        System.out.println("This animal is sleeping.");
+    }
+}
+
+
+
+What is a Collection?
+A collection is an object that can hold references to other objects. Collections are used to store, retrieve, manipulate, and communicate aggregate data, and they typically represent data structures such as lists, sets, and maps.
+
+Types of collections:-
+List, Set, Queue, Dequeue, Map
+
+
+What are access modifiers in Java?
+* Access modifiers define the visibility of classes, methods, and variables in Java. The main access modifiers are:
+    * Public: Accessible from anywhere.
+    * Private: Accessible only within the declared class.
+    * Protected: Accessible within the same package and subclasses.
+    * Default (no modifier): Accessible only within the same package.
+
+
+What is a constructor in Java?
+* A constructor is a block of code that initializes a newly created object. It has the same name as the class and does not have a return type. There are two types of constructors:
+    * Default Constructor: A constructor with no parameters.
+    * Parameterized Constructor: A constructor with parameters.
+
+
+The main difference between primitive and non-primitive data types are:
+* Primitive types are predefined in Java. Non-primitive types are created by the programmer and is not defined by Java.
+
+* A primitive type always has a value, while non-primitive types can be null.
+* A primitive type starts with a lowercase letter, while non-primitive types starts with an uppercase letter.
+
+
+If we have third party class and if I import that in spring will that work?
+Yes we have to create one bean
+
+
+
+What Is @configuration
+In Spring, the @Configuration annotation is used to define a class as a configuration class that can contain Spring Bean definitions. it tells the Spring framework that the class contains @Bean-annotated methods
+
+
+Throw vs throws in java
+Throw:-
+Used to explicitly throw an exception.
+Inside a method, when you want to manually trigger an exception under specific conditions.
+
+public void checkAge(int age) {
+    if (age < 18) {
+        throw new IllegalArgumentException("Age must be 18 or above.");
+    }
+}
+
+
+Throws:-
+Declares the types of exceptions a method might throw to its caller.
+In the method signature to inform the compiler and calling code that an exception might occur.
+
+public void readFile(String filePath) throws IOException {
+    // Code that might throw IOException
+}
+
+
+
+diff between Final, finally, finalised 
+
+1. final
+* To create constants or prevent modifications.
+    * Final variable: Can’t be changed once assigned.
+    * Final method: Can’t be overridden by subclasses.
+
+final int MAX_VALUE = 100;
+
+2. finally
+* Used in exception handling to ensure a block of code executes, whether an exception occurs or not.
+* Placed after a try-catch block.
+
+3. finalize
+* Used to clean up resources before an object is garbage collected.
+* Override finalize() in a class if special cleanup is needed before an object’s memory is reclaimed.
+
+@Override protected void finalize() { System.out.println("Cleaning up before garbage collection."); }
+
+
+
+What is bean in spring boot
+
+In Spring Boot, a bean is an object that is managed by the Spring framework. These objects are created, initialized, and controlled by the Spring container, which is part of the framework's Inversion of Control (IoC) mechanism. Think of a bean as a "building block" or "ingredient" that Spring uses to assemble and manage your application's functionality.
+
+
+
+
+ 
+
+1. Primitive Data Types:—
+Byte, short, int, long, float, double, char, boolean
+
+2  Non-Primitive:—
+String, Arrays, classes & objects
+
+
+SELECT * 
+FROM employee 
+WHERE salary = (
+    SELECT MAX(salary) 
+    FROM employee 
+    WHERE salary < (SELECT MAX(salary) FROM employee)
+);
+
+
+SELECT salary
+FROM employees
+ORDER BY salary ASC;
+
+
+SELECT department, COUNT(*) AS num_employees FROM employees GROUP BY department;
+
+
+
+
+
+EC2 =  Azure VM
+S3  =  Azure Blob
+RDS  =  Azure SQL
+IAM  =  Azure AD (Active Directory)
+
+
+
+
+
+
+
+
+
+
+ArrayList is used if we need efficient random access and are performing fewer insertions/deletions.
+LinkedList is used if your application requires frequent insertions and deletions, particularly at the start or end of the list.
+
+
+Feature	Array	ArrayList
+Type	Fixed-size data structure.	Dynamic-size data structure.
+Size	Size is fixed at the time of creation and cannot be changed.	Size can grow or shrink dynamically as elements are added or removed.
+Memory	More memory-efficient for storing fixed data.	Takes more memory because of its dynamic resizing.
+Storage Type	Can store primitive types (like int, float, etc.) and objects.	Can only store objects (cannot store primitives directly).
+
+Insertion/Deletion	Insertions and deletions are not efficient 	Insertion and deletion are easier and more efficient due to dynamic resizing.
+Type of Collection	It is a part of java.lang package.	It is a part of java.util package and implements the List interface.
+Resizing	Cannot resize after creation.	Automatically resizes when needed.
+
+Null Values	Can store null if it's an array of objects (but not primitive arrays).	Can store null values in an ArrayList.
+Syntax	int[] arr = new int[5];	ArrayList<Integer> list = new ArrayList<>();
+
+what is overriding in java
+
+
+Method overriding in Java is a feature that allows a subclass to provide its specific implementation of a method that is already defined in its superclass. 
+The method in the subclass should have the same name, return type, and parameters as the one in the superclass.
+
+
+class Animal { 
+public void sound() { 
+System.out.println("Some generic animal sound"); } }
+
+class Dog extends Animal {
+@Override public void sound() { 
+System.out.println("Bark"); } }
+
+
+
+Method Overloading in Java refers to defining multiple methods in the same class with the same name but with different parameters. 
+Overloading allows a method to perform similar operations but with different inputs.
+
+
+
+
+Static method:-
+
+A static method in Java is a method that belongs to the class itself, not to any particular object we created from that class.
+Since static methods are part of the class, they are shared by all objects created from that class.
+
+API Gateway:-
+
+An API Gateway in Java is a server that acts as an entry point for all requests from clients (such as web browsers, mobile apps, etc.) 
+to access different services in a system. 
+It is a single point of contact for clients and helps in routing requests, aggregating responses, and handling various other concerns like security, logging, and rate limiting.
+
+
+API Gateway does:
+Routing Requests:
+Authentication and Security:
+Load Balancing:
+Rate Limiting:
+
+
+
+The Stream API in Java provides a powerful way to handle collections of data by using functional programming concepts. 
+It simplifies operations on data, making code more readable and concise. 
+And Streams are great for working with large datasets, as they allow for lazy evaluation, chaining operations, and even parallel processing.
+
+filter()
+map()
+sorted()
+
+
+Callable:-
+
+Represents a task that can be executed concurrently, and returns a result.
+Can throw checked exceptions, which need to be handled.
+
+Thread:-
+
+In Java, a thread is a lightweight unit of execution within a program. Multiple threads can run concurrently, sharing the same resources (such as memory), which helps improve performance,
+
+Types of Threads:
+* Main thread: 
+* User threads:
+
+class MyThread extends Thread
+class MyRunnable implements Runnable
+
+Multithreading in java:-
+Multithreading in Java allows the concurrent execution of two or more parts of a program to maximize CPU usage. Each part of a program is called a thread, and these threads can run independently.
+
+Thread Lifecycle: 
+* New: 
+* Runnable: 
+* Blocked: 
+* Waiting: 
+* Terminated: 
+
+
+
+Exception Handling:-
+In Java, an exception is an event that disrupts the normal flow of the program's instructions.
+
+Checked Exceptions: Exceptions that are checked at compile-time.  IOException
+Unchecked Exceptions (RuntimeExceptions): Exceptions that are not checked at compile time.
+NullPointer
+
+
+
+
+@RestController: This annotation combines @Controller and @ResponseBody, meaning that every method in this class will return data directly in the response body (usually in JSON format).
+
+@ComponentScan:
+* Purpose: Tells Spring where to search for annotated components, services, repositories, and other beans.
+* Usage: It's typically used with @SpringBootApplication to automatically scan the project for components.
+@ComponentScan(basePackages = "com.example")
+
+
+
+
+JDK 8:
+* Introduced Lambda Expressions
+* Introduced Streams API
+* New Date and Time API: java.time package was introduced to replace the older Date and Calendar classes
+
+JDK 20:
+Improved APIs HTTP Client (introduced in JDK 9)
+Enhanced date/time API features.
+Introduced the Z Garbage Collector, a low-latency, scalable garbage collector
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EC2:-
+
+Instance name,  AMI,  t2 micro,  key pair (.pem),  VPC to allow traffic, Storage config (RAM select),  IAM,  
+
+Types of EC2:-
+
+On-Demand: Pay for compute capacity by the hour/second.
+Reserved Instances: Commit to a 1- or 3-year term for cost savings.
+Spot Instances: Purchase unused capacity at discounted rates.
+Savings Plans: Flexible pricing model for cost reduction.
+
+
+S3:-
+
+Bucket name (unique), Region,  Ownership (only you or others), Block public access,  bucket versioning, encryption 
+
+To open object copy the object url
+
+Create bucket policy to make the objects public and disable public access
+
+Enable show versions option to enable the bucket versioning
+
+To deploy static website go to static website hosting option and enable it and pastqe the index.html file.  One link will be generrated and use the same
+	
+
+IAM:-
+
+go to users and click on create user, username, AWS credential type, Add permissions, Attach the permission 
+
+Create group, enter group name and attach the policies
+
+
+CloudWatch:-
+
+Custom dashboard,  Automatic Dashboard
+
+Cpu utilisation, network packets in/ out, disk usage  ,enable Alarm, 
+
+Create Alarm, Alarm, Matric (ec2, s3), time, stats
+
+
+EBS:-
+
+SSD, HDD, Flexible sizes,  Backups, detachable
+
+
+AWS Code commit, code build, code pipeline
+
+
+
+Load Balancer:-
+
+Classic, Application, Network, gateway
+
+ALB :-
+HTTP / HTTPs
+Routes traffic based on content (e.g., URL, hostname, or headers
+
+NLB :-
+
+High-performance, low-latency traffic like gaming, video streaming, or financial systems.
+* Routes traffic based on IP addresses and ports.
+
+GLB :-
+
+Deploying third-party appliances like firewalls, intrusion detection systems, and deep packet inspection.
+* Acts as a gateway and a load balancer.
+
+CLB :- 
+
+Legacy applications or simple load balancing needs.
+* Can route traffic for both HTTP/HTTPS (Layer 7) and TCP (Layer 4).
+
+
+
+
+EC2 Template:-
+
+Template name, AMI, instance type, key pairs, VPC to allow traffic, Storage config (RAM select),  IAM,
+
+
+
+Create an Auto Scaling Group:
+
+Name, Template select, VPC, Load balancers, 
+Desired Capacity
+Minimum Capacity
+Maximum Capacity
+Dynamic Scaling: Automatically add/remove instances based on demand
+Add Notifications (Optional)
+
+
+
+
+
+
+
+
+Blue/green deployments:-  means first will deploy to green env if everything works fine will deploy to blue env
+
+Canary deployments:-  means first will deploy for small users 5-10% users if everything works fine will deploy for other users in canary state.
+
+
+
+
+
+EC2 =  Azure VM
+S3  =  Azure Blob
+RDS  =  Azure SQL
+IAM  =  Azure AD (Active Directory)
+
+
+
+
+
+
+
+Azure VM:-
+
+Subscription: Choose the appropriate subscription under which you want to create the VM.
+Resource Group: Either select an existing resource group or create a new one.
+Virtual Machine Name
+Region
+Availability Options: Select the availability option (e.g., "No infrastructure redundancy required" or choose a VM availability set or availability zone).
+Image:
+Size:select the number of CPUs, RAM, etc.
+Authentication Type: Choose whether you want to use SSH public key (Linux) or password (Windows).
+
+
+Virtual Network: Choose an existing virtual network or create a new one. This is the network your VM will be connected to.
+Subnet: Select an existing subnet or create a new one.
+Public IP:
+
+Monitoring:
+Auto-shutdown: Optionally, enable auto-shutdown for the VM at a specific time to save costs.
+Backup:
+
+OS Disk Type: Standard HDD, Standard SSD, or Premium SSD
+Data Disks:
+
+Review + Create
+
+
+
+
+
+Azure blob:-
+
+2. Create a Storage Account
+* In the Azure portal, click on the "Create a resource" button located on the top left of the dashboard.
+* Under the "Popular" category, select "Storage account".
+
+3. Fill in Storage Account Details
+* Subscription: Pay as you go
+* Resource Group: Select an existing resource group or create a new one 
+* Storage Account Name: unique name 
+* Region: 
+* Performance: Choose between Standard or Premium. Standard is typically sufficient for most use cases.
+* Redundancy: Choose the redundancy option, such as Locally redundant storage (LRS), Geo-redundant storage (GRS), etc., based on your availability and redundancy requirements.
+
+4. Review and Create
+* After entering all required details, click on Next to proceed through the other settings like networking, data protection, etc. You can generally use the default options unless you have specific requirements.
+* Finally, click on Review + Create to review your configuration, and then click on Create to provision the storage account.
+
+5. Enable blob versioning:
+1. Go to your Storage Account.
+2. Navigate to Data protection (under Blob service).
+3. Enable Blob versioning under the “Tracking” section.
+4. Save the changes.
+
+
+6. Access the Blob Storage
+* Once the storage account is created, navigate to it.
+* In the left pane, select Containers under the Data Storage section.
+* Click + Container to create a new container. A container is where you will store your blobs (objects like files).
+* Choose a name for your container (names must be lowercase and can contain only letters, numbers, and hyphens).
+* Set the container's access level: Private, Blob (anonymous read access for blobs only), or Container (anonymous read access to blobs and container metadata).
+* After setting up the container, click OK.
+
+7. Upload Files to Blob Storage
+* After creating the container, you can upload files by clicking on the container name.
+* Click Upload at the top of the container's page.
+* Browse for the files you want to upload and select them. Then click Upload to store the files as blobs in your container.
+
+
+
+
+
+
+Azure Active Directory:-
+
+
+1. Create a New Directory:
+    * In the Azure AD service pane, click on Create a directory.
+    * You’ll be prompted to choose between two options:
+        * Azure AD (Cloud-only): A cloud-only instance of Azure AD.
+        * Azure AD B2C: For creating a customer identity and access management service.
+2. For most scenarios, choose Azure AD (Cloud-only).
+3. Fill in the Details:
+    * Organization name: This is the name of your directory (e.g., "MyCompany").
+    * Initial domain name: This will be the default domain for your directory (e.g., "mycompany.onmicrosoft.com").
+    * Country or region: Select the country where your organization is located.
+4. Review and Create:
+    * After filling in the details, click on the Review + Create button.
+    * The Azure portal will validate your entries.
+    * If everything looks good, click Create to create the directory.
+
+Step 3: Add Users and Groups to Your Directory
+1. Add Users:
+    * After the directory is created, you can start adding users.
+    * In the Azure AD pane, select Users and then click + New user.
+    * Choose between creating a new user or inviting an existing user.
+    * Enter the required details, such as username, name, and role.
+2. Add Groups (optional):
+    * You can also create security groups for better user management.
+    * In the Azure AD pane, click on Groups and then select + New group.
+    * Define the group name, membership type (Assigned, Dynamic), and other options.
+    * Add members to the group as needed.
+
+Step 4: Assign Roles (Optional)
+Azure AD allows you to assign roles to users for managing the directory and its resources:
+1. In the Azure AD pane, go to Roles and administrators.
+2. Select a role (e.g., Global Administrator, User Administrator) and click on Add assignment to assign the role to a user.
+
+Step 5: Configure Other Azure AD Settings (Optional)
+You can configure additional features in Azure AD:
+* Custom Domains: You can add custom domains for your organization, like mycompany.com, by going to Custom domains under the Azure AD pane.
+* Applications: You can register applications that can access Azure AD (e.g., single sign-on apps) via Enterprise applications.
+* Security: Set up Multi-Factor Authentication (MFA), conditional access policies, and more under Security.
+
+Step 6: Verify Your Directory
+Once everything is set up, ensure that your Azure AD directory is working as expected by:
+* Testing login for new users.
+* Ensuring that roles and permissions are set correctly.
+* Verifying that custom domains (if added) are working.
+
+
+
+
+
+Azure App Services enables to build, deploy, and scale web applications, APIs, and mobile backends. And It's part of the Azure platform-as-a-service (PaaS) offering, meaning we can focus on application logic rather than managing infrastructure.
+
+Azure App Service
+
+
+2. Create a New Web App
+* Click "Create a resource" > search for "Web App" > click Create.
+
+3. Configure the Basics
+* Subscription: Select yours
+* Resource Group: Create or choose one
+* Name: e.g., my-docker-app
+* Publish: Select Docker Container
+* Operating System: Choose Linux
+* Region: Choose region close to your users
+
+4. Configure Docker Settings
+* Under Docker Options:
+    * Image Source:
+        * Docker Hub for public/private images
+        * Azure Container Registry if you host your own
+        * Private Registry if using third-party hosting
+    * Image and Tag:
+        * Enter image name (e.g., myrepo/myapp) and tag (latest or specific tag)
+    * Startup File (optional):
+        * Provide any startup command your container needs
+
+5. App Service Plan
+* Choose a Linux-compatible pricing tier (B1, S1, etc.)
+
+6. Review and Create
+* Click Review + Create, then Create
+
+
+
+
+
+
+
+Azure Monitor
+
+
+Step 2: Enable Azure Monitor for your VM
+
+Enable Monitoring for an Existing VM
+If you already have a VM running and want to enable monitoring, follow these steps:
+1. Navigate to your VM:
+    * Go to the Azure Portal.
+    * In the Virtual Machines section, select your existing VM.
+2. Enable Boot Diagnostics:
+    * In the left pane under Support + troubleshooting, click on Boot diagnostics.
+    * Ensure Boot diagnostics is enabled.
+3. Enable Guest OS Diagnostics:
+    * In the Monitoring section on the left, select Diagnostics settings.
+    * Click on + Add diagnostic setting.
+    * In the Diagnostic settings window:
+        * Give the diagnostic setting a name.
+        * Choose to send data to a Log Analytics workspace, Storage Account, or Event Hub.
+        * Select the types of data you want to collect (e.g., Guest OS Metrics, Performance Counters, Event Logs, etc.).
+    * Click Save.
+
+Step 3: Set up Log Analytics Workspace
+A Log Analytics Workspace is where you’ll collect, store, and analyze your diagnostic data.
+1. Go to the Azure Portal.
+2. Search for Log Analytics Workspaces in the top search bar.
+3. Click on + Add to create a new workspace.
+4. Provide a name, subscription, and resource group, and select the region.
+5. Click Review + Create, then Create.
+6. Once the workspace is created, go back to your VM's diagnostic settings (as shown earlier) and ensure it's connected to this workspace.
+
+Step 4: Configure Monitoring Alerts (Optional)
+You can set up alerts to get notified when specific conditions are met on your VM (e.g., high CPU usage, low disk space).
+1. In the Azure Portal, search for Monitor.
+2. In the Monitor section, select Alerts > + New alert rule.
+3. Select your VM as the target resource.
+4. Define the Condition (e.g., CPU utilization > 80%).
+5. Choose the Action Group to get notified (e.g., email, SMS, or webhook).
+6. Provide a Name and Description for the alert.
+7. Click Create to finalize the alert rule.
+
+Step 5: View Metrics and Logs
+Once monitoring is enabled, you can start viewing metrics and logs from your VM.
+View Metrics:
+1. Navigate to your VM in the Azure Portal.
+2. Under the Monitoring section, click on Metrics.
+3. Choose the metric you want to monitor (e.g., CPU usage, disk I/O, network traffic).
+4. You can configure the chart to display different time periods and aggregations (e.g., average, maximum).
+
+
+
+
+
+Set Budgets & Alerts
+Azure Cost Management + Billing: Use this built-in tool to: to set spending limits and get alerts.
+Right-Size Resources Resize or shut down underused VMs; use Azure Advisor recommendations.
+Monitor with Cost Analysis
+
+Remove Unused Resources Regularly clean up idle VMs, disks, IPs, etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
